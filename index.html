@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 100 Promises for Sneha 🎀</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&family=Fredoka:wght@300;400;500;600&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --kitty-pink: #ff69b4;
+            --kitty-light-pink: #ffb6d9;
+            --kitty-hot-pink: #ff1493;
+            --kitty-cream: #fff5f7;
+            --kitty-bow-red: #ee4466;
+            --hacker-green: #00ff41;
+            --hacker-dark: #0d1117;
+            --hacker-gray: #161b22;
+            --hacker-light: #39ff14;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 50%, #ff1493 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Kawaii Background */
+        .kawaii-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .kitty-bow {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: floatKawaii 20s infinite ease-in-out;
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatKawaii 25s infinite ease-in-out;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes floatKawaii {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            50% {
+                transform: translateY(-10vh) rotate(360deg) scale(1);
+            }
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            background: white;
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 3px solid var(--kitty-pink);
+        }
+
+        .music-toggle {
+            background: var(--kitty-pink);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            background: var(--kitty-hot-pink);
+        }
+
+        .music-toggle.playing {
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .music-info {
+            font-size: 0.9rem;
+            color: var(--kitty-pink);
+            font-weight: 600;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+            border: 3px solid var(--kitty-pink);
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .nav-btn {
+            background: var(--kitty-pink);
+            border: none;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            background: var(--kitty-hot-pink);
+            transform: translateX(5px);
+        }
+
+        .nav-btn.active {
+            background: var(--kitty-bow-red);
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: opacity 1s, transform 1s;
+        }
+
+        .welcome-screen.fade-out {
+            opacity: 0;
+            transform: scale(1.2);
+            pointer-events: none;
+        }
+
+        .welcome-screen.hidden {
+            display: none !important;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: bounceIn 1s ease-out;
+            padding: 2rem;
+        }
+
+        .hello-kitty-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hello-kitty-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .welcome-content h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .welcome-content .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .welcome-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .start-button {
+            background: white;
+            color: var(--kitty-pink);
+            border: 4px solid var(--kitty-pink);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .start-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            background: var(--kitty-cream);
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Questionnaire */
+        .questionnaire-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
+            z-index: 10000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .questionnaire-screen.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .question-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 30px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            border: 5px solid var(--kitty-pink);
+        }
+
+        .kitty-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        .kitty-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .question-container h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: var(--kitty-pink);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            white-space: pre-line;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #ffe6f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--kitty-pink), var(--kitty-hot-pink));
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .options {
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+            color: white;
+            border: none;
+            font-size: 1.4rem !important;
+            padding: 1.3rem 2.8rem !important;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f) !important;
+            color: white;
+            border: none;
+            font-size: 1.1rem !important;
+            padding: 1.1rem 2.3rem !important;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            position: absolute;
+        }
+
+        /* Screens */
+        .screen {
+            display: none;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .screen-header {
+            text-align: center;
+            margin: 100px 0 3rem 0;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .screen-header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .screen-header p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Promise Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .promise-card {
+            perspective: 1000px;
+            height: 320px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .promise-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #fff 0%, #ffe6f0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--kitty-pink);
+        }
+
+        .card-front .kitty-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1rem;
+        }
+
+        .card-front .kitty-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .card-front .card-number {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--kitty-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-front .lock-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-back {
+            background: var(--hacker-dark);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow: hidden;
+            border: 3px solid var(--hacker-green);
+            font-family: 'Fira Code', monospace;
+            padding: 1.2rem;
+        }
+
+        .promise-text {
+            color: var(--hacker-green);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+            font-family: 'Fira Code', monospace;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+
+        .promise-text::before {
+            content: '> ';
+            color: var(--hacker-light);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background: var(--hacker-green);
+            animation: blink 0.7s infinite;
+            margin-left: 2px;
+            vertical-align: text-bottom;
+        }
+
+        /* Promise Modal */
+        .promise-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10002;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .promise-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--hacker-dark);
+            padding: 2.5rem;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 255, 65, 0.3);
+            position: relative;
+            border: 3px solid var(--hacker-green);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--hacker-green);
+        }
+
+        .modal-title {
+            color: var(--hacker-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button:nth-child(1) { background: #ff5f56; }
+        .terminal-button:nth-child(2) { background: #ffbd2e; }
+        .terminal-button:nth-child(3) { background: #27c93f; }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--hacker-green);
+            border: none;
+            font-size: 1.3rem;
+            color: var(--hacker-dark);
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .close-modal:hover {
+            background: var(--hacker-light);
+            transform: scale(1.1);
+        }
+
+        .modal-promise-number {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: var(--hacker-light);
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .modal-promise-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--hacker-green);
+            text-align: left;
+            min-height: 80px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            border: 3px solid var(--kitty-pink);
+            transform: rotate(-2deg);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .photo-frame:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
+            z-index: 10;
+        }
+
+        .photo-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .photo-caption {
+            text-align: center;
+            color: var(--kitty-pink);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .photo-date {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Love Letter */
+        .love-letter {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff9f0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            border: 3px solid var(--kitty-pink);
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px dashed var(--kitty-pink);
+            padding-bottom: 2rem;
+        }
+
+        .letter-to {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem;
+            color: var(--kitty-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .letter-date {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .letter-content {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+        .letter-content p {
+            margin-bottom: 1.3rem;
+            text-indent: 2rem;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            color: var(--kitty-pink);
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s linear forwards;
+            z-index: 10003;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            animation: sparkleAnim 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* === UI ENHANCEMENTS === */
+
+        /* Promise card hover glow & lift */
+        .promise-card:hover .card-front {
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.65);
+            transform: translateY(-6px) scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        .card-front {
+            transition: all 0.3s ease;
+        }
+
+        /* Card unlock badge */
+        .card-front .lock-icon {
+            margin-top: 0.4rem;
+            font-size: 1.6rem;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .promise-card:hover .lock-icon {
+            transform: scale(1.3) rotate(-10deg);
+            opacity: 1;
+        }
+
+        /* Modal entrance animation */
+        .promise-modal.active .modal-content {
+            animation: modalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.8) translateY(20px); opacity: 0; }
+            to   { transform: scale(1) translateY(0);     opacity: 1; }
+        }
+
+        /* Progress bar glow */
+        .progress-fill {
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
+        }
+
+        /* Valentine overlay bg fade */
+        @keyframes fadeInBg {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* Question container subtle entrance */
+        .question-container {
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        /* Nav menu polish */
+        .nav-menu {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Promises unlocked counter */
+        #unlockedCount {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+            background: white;
+            border: 3px solid var(--kitty-pink);
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-weight: 700;
+            color: var(--kitty-pink);
+            font-size: 0.95rem;
+            box-shadow: 0 6px 20px rgba(255,105,180,0.3);
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .welcome-content h1 {
+                font-size: 2.5rem;
+            }
+            .screen-header h1 {
+                font-size: 2rem;
+            }
+            .screen-header {
+                margin-top: 80px;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .nav-menu {
+                font-size: 0.85rem;
+            }
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            .question-container {
+                padding: 2rem 1.5rem;
+            }
+            .options {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="kawaii-bg" id="kawaiiBg"></div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle">🎵</button>
+        <span class="music-info" id="musicInfo">Music</span>
+    </div>
+    <audio id="bgMusic" loop src="/mnt/user-data/uploads/TWICE__What_is_Love___M_V.mp3"></audio>
+
+    <!-- Navigation -->
+    <div class="nav-menu" id="navMenu" style="display: none;">
+        <button class="nav-btn" onclick="showScreen('promisesScreen')">💝 100 Promises</button>
+        <button class="nav-btn" onclick="showScreen('letterScreen')">💌 Love Letter</button>
+        <button class="nav-btn" onclick="showScreen('galleryScreen')">📸 Memories</button>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <div class="hello-kitty-logo">
+                <img src="/mnt/user-data/uploads/IMG_20251219_233518_652.jpg" alt="Sneha" style="border-radius:50%;object-fit:cover;border:5px solid white;box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+            </div>
+            <h1>For Sneha</h1>
+            <p class="subtitle">With All My Love</p>
+            <p>A magical journey of 100 promises</p>
+            <button class="start-button" id="startBtn">Start Our Adventure 💕</button>
+        </div>
+    </div>
+
+    <!-- Questionnaire -->
+    <div class="questionnaire-screen" id="questionnaireScreen">
+        <div class="question-container">
+            <div class="kitty-avatar">
+                <img src="/mnt/user-data/uploads/IMG_20251219_233518_652.jpg" alt="Sneha" style="border-radius:50%;object-fit:cover;">
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <h2>Let's Have Fun, Sneha!</h2>
+            <p class="question-text" id="questionText"></p>
+            <div class="options" id="optionsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Promises Screen -->
+    <div class="screen" id="promisesScreen">
+        <div class="screen-header">
+            <h1>100 Promises for Sneha 🎀</h1>
+            <p>Click cards to unlock promises (Hacker Mode 💚)</p>
+        </div>
+        <div class="cards-container" id="cardsContainer"></div>
+    </div>
+
+    <!-- Love Letter -->
+    <div class="screen" id="letterScreen">
+        <div class="screen-header">
+            <h1>A Letter From My Heart 💌</h1>
+        </div>
+        <div class="love-letter">
+            <div class="letter-header">
+                <div class="letter-to">To My Dearest Sneha,</div>
+                <div class="letter-date">Promise Day 2025</div>
+            </div>
+            <div class="letter-content">
+                <p>Every moment with you feels like a beautiful dream that I never want to wake up from. You've brought so much light, joy, and meaning into my life that words often fail to capture the depth of what I feel.</p>
+                <p>Sneha, you are not just my partner; you are my best friend, my confidant, and the person who makes every day brighter. Your smile has the power to turn my worst days into the best ones, and your laughter is the sweetest melody my heart has ever known.</p>
+                <p>I promise to cherish you, to support your dreams as if they were my own, and to stand by your side through every adventure life brings us. Whether we're celebrating victories or facing challenges, I want you to know that you'll never walk alone.</p>
+                <p>These 100 promises are just the beginning of a lifetime of love, care, and devotion I want to give you. Each promise represents a piece of my heart that belongs to you and you alone.</p>
+                <p>Thank you for being you – for your kindness, your strength, your beautiful soul. Thank you for choosing me and for letting me be part of your world. I fall in love with you more with each passing day.</p>
+                <p>Here's to us, to our love, and to the beautiful forever we're building together. You are my today and all of my tomorrows, Sneha.</p>
+            </div>
+            <div class="letter-signature">Forever Yours ❤️</div>
+        </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="screen" id="galleryScreen">
+        <div class="screen-header">
+            <h1>Our Beautiful Memories 📸</h1>
+            <p>Moments that make my heart smile</p>
+        </div>
+        <div class="photo-gallery">
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </div>
+
+    <!-- Unlocked Counter -->
+    <div id="unlockedCount">💝 0 / 100 Unlocked</div>
+
+    <!-- Promise Modal -->
+    <div class="promise-modal" id="promiseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">promise.exe</div>
+                <div class="terminal-buttons">
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                    <div class="terminal-button"></div>
+                </div>
+            </div>
+            <button class="close-modal" id="closeModal">×</button>
+            <div class="modal-promise-number" id="modalPromiseNumber"></div>
+            <div class="modal-promise-text" id="modalPromiseText"></div>
+        </div>
+    </div>
+
+    <script>
+        // Image Files — real photos of Sneha & us 💕
+        const imageFiles = [
+            '/mnt/user-data/uploads/IMG_20251219_233518_652.jpg',
+            '/mnt/user-data/uploads/IMG-20250913-WA0013.jpg',
+            '/mnt/user-data/uploads/IMG_20251021_010736_971.jpg',
+            '/mnt/user-data/uploads/IMG_20251127_222501.jpg',
+            '/mnt/user-data/uploads/Snapchat-1507274770.jpg',
+            '/mnt/user-data/uploads/Snapchat-1212221184.jpg',
+            '/mnt/user-data/uploads/Snapchat-1444969917.jpg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_34_AM__1_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_35_AM.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_34_AM.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM__2_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM__1_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__3_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__2_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__1_.jpeg',
+            '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM.jpeg'
+        ];
+
+        // Audio System
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let isMusicPlaying = false;
+        const bgMusic = document.getElementById('bgMusic');
+        
+        function playSound(freq, dur) {
+            try {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.frequency.value = freq;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + dur);
+                osc.start(audioContext.currentTime);
+                osc.stop(audioContext.currentTime + dur);
+            } catch(e) {}
+        }
+
+        function playClick() { playSound(600, 0.05); }
+        function playSuccess() {
+            playSound(523.25, 0.15);
+            setTimeout(() => playSound(659.25, 0.15), 150);
+            setTimeout(() => playSound(783.99, 0.3), 300);
+        }
+        function playCardFlip() {
+            playSound(800, 0.1);
+            setTimeout(() => playSound(1200, 0.1), 100);
+        }
+
+        // Music Toggle
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            isMusicPlaying = !isMusicPlaying;
+            const info = document.getElementById('musicInfo');
+            if (isMusicPlaying) {
+                bgMusic.play().catch(e => console.log('Play failed'));
+                this.classList.add('playing');
+                info.textContent = 'What is Love 💕';
+            } else {
+                bgMusic.pause();
+                this.classList.remove('playing');
+                info.textContent = 'Music';
+            }
+            playClick();
+        });
+
+        // Background Decorations
+        function createDecorations() {
+            const bg = document.getElementById('kawaiiBg');
+            const decos = ['🎀', '💝', '🌸', '⭐', '💕'];
+            for (let i = 0; i < 12; i++) {
+                const d = document.createElement('div');
+                d.className = 'kitty-bow';
+                d.textContent = decos[Math.floor(Math.random() * decos.length)];
+                d.style.left = Math.random() * 100 + '%';
+                d.style.animationDelay = Math.random() * 20 + 's';
+                bg.appendChild(d);
+            }
+            for (let i = 0; i < 6; i++) {
+                const img = document.createElement('img');
+                img.className = 'floating-image';
+                img.src = imageFiles[i];
+                img.style.left = Math.random() * 100 + '%';
+                img.style.animationDelay = Math.random() * 25 + 's';
+                bg.appendChild(img);
+            }
+        }
+
+        // Questions
+        const questions = [
+            {
+                question: "Do you love me? 🥺",
+                noMessages: ["Click Yes, you silly! 😤", "Stop playing! 😏", "You know you do! 💕", "Sneha... really? 🙄"]
+            },
+            {
+                question: "Am I the most handsome? 😎",
+                noMessages: ["Wrong answer! 😤", "Come on! 💪", "You're lying! 😂", "I know I am! 😏"]
+            },
+            {
+                question: "Do I make you smile? 😊",
+                noMessages: ["But I try hard! 🥺", "Not even a little? 😢", "Please say yes! 😭"]
+            },
+            {
+                question: "Am I your favorite? 🌍",
+                noMessages: ["That hurts! 😣", "Think again! 🤔", "You sure? 😏"]
+            },
+            {
+                question: "Am I cute? 🥰",
+                noMessages: ["How dare you! 😠", "I'm adorable! 😇", "Just say yes! 🤪"]
+            },
+            {
+                question: "Forever with me? 💕",
+                noMessages: ["You're stuck! 😈", "No choice! 😘", "We're forever! 💖"]
+            },
+            {
+                question: "Will you be my Valentine,\nMiss Sneha?\n(My Pookie, My Cutie, My Princess) 💝",
+                noMessages: ["Nope! Say yes! 💕", "Please? 👑", "You can't escape! 😄"],
+                isValentine: true
+            }
+        ];
+
+        let currentQ = 0;
+        let noCount = 0;
+
+        document.getElementById('startBtn').addEventListener('click', function() {
+            playSuccess();
+            // Auto-start BGM on first interaction
+            if (!isMusicPlaying) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    document.getElementById('musicToggle').classList.add('playing');
+                    document.getElementById('musicInfo').textContent = 'What is Love 💕';
+                }).catch(() => {});
+            }
+            const ws = document.getElementById('welcomeScreen');
+            ws.classList.add('fade-out');
+            setTimeout(() => {
+                ws.classList.add('hidden');
+                document.getElementById('questionnaireScreen').classList.add('active');
+                loadQuestion();
+            }, 1000);
+        });
+
+        function loadQuestion() {
+            if (currentQ >= questions.length) {
+                completeQuiz();
+                return;
+            }
+            noCount = 0;
+            const q = questions[currentQ];
+            document.getElementById('questionText').textContent = q.question;
+            const opts = document.getElementById('optionsContainer');
+            opts.innerHTML = '';
+            
+            const yesBtn = document.createElement('button');
+            yesBtn.className = 'yes-btn';
+            yesBtn.textContent = '💕 Yes!';
+            yesBtn.onclick = selectYes;
+            
+            const noBtn = document.createElement('button');
+            noBtn.className = 'no-btn';
+            noBtn.textContent = '💔 No';
+            noBtn.id = 'noBtn';
+            noBtn.onmouseover = moveNo;
+            noBtn.onclick = clickNo;
+            
+            opts.appendChild(yesBtn);
+            opts.appendChild(noBtn);
+            updateProgress();
+            
+            if (q.isValentine) createHeartRain();
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            const cont = btn.parentElement.getBoundingClientRect();
+            btn.style.left = Math.random() * (cont.width - 150) + 'px';
+            btn.style.top = Math.random() * (cont.height - 70) + 'px';
+            const size = parseFloat(btn.style.fontSize || '1.1rem');
+            if (size > 0.6) {
+                btn.style.fontSize = (size - 0.08) + 'rem';
+                btn.style.padding = (size - 0.2) + 'rem ' + (size) + 'rem';
+            }
+            playClick();
+        }
+
+        function clickNo() {
+            const q = questions[currentQ];
+            playClick();
+            if (noCount < q.noMessages.length) {
+                showMsg(q.noMessages[noCount]);
+                noCount++;
+            }
+            moveNo();
+            const yBtn = document.querySelector('.yes-btn');
+            const sz = parseFloat(yBtn.style.fontSize || '1.4rem');
+            yBtn.style.fontSize = (sz + 0.15) + 'rem';
+            yBtn.style.padding = (sz + 0.2) + 'rem ' + (sz + 0.5) + 'rem';
+            yBtn.style.transform = 'scale(' + (1 + noCount * 0.08) + ')';
+            if (noCount >= 4) {
+                document.getElementById('noBtn').style.opacity = '0.2';
+                showMsg("Button gave up! Click YES! 😂");
+            }
+        }
+
+        function showMsg(msg) {
+            const div = document.createElement('div');
+            div.style.cssText = 'position:fixed;top:20%;left:50%;transform:translateX(-50%);background:white;padding:1.5rem 2.5rem;border-radius:20px;border:4px solid var(--kitty-pink);font-size:1.2rem;font-weight:600;color:var(--text-dark);z-index:10005;box-shadow:0 10px 40px rgba(255,105,180,0.5);';
+            div.textContent = msg;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 2000);
+        }
+
+        function selectYes() {
+            playSuccess();
+            createSparkles(window.innerWidth / 2, window.innerHeight / 2);
+            createConfetti();
+            const q = questions[currentQ];
+            if (q.isValentine) {
+                showValentine();
+            } else {
+                currentQ++;
+                setTimeout(loadQuestion, 800);
+            }
+        }
+
+        function showValentine() {
+            const overlay = document.createElement('div');
+            overlay.id = 'valentineOverlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:10006;display:flex;align-items:center;justify-content:center;animation:fadeInBg 0.4s ease;';
+
+            const div = document.createElement('div');
+            div.style.cssText = 'background:white;padding:2.5rem 3rem;border-radius:30px;border:5px solid var(--kitty-pink);font-size:1.8rem;font-weight:700;color:var(--kitty-pink);box-shadow:0 20px 60px rgba(255,105,180,0.6);text-align:center;max-width:550px;width:90%;position:relative;animation:bounceIn 0.5s ease-out;';
+            div.innerHTML = `
+                <div style="font-size:3.5rem;margin-bottom:1rem;">🎉💕🎊</div>
+                <div style="font-family:'Pacifico',cursive;margin-bottom:1rem;">Yay! You said YES!</div>
+                <div style="font-size:1.2rem;color:var(--text-dark);font-weight:500;line-height:1.8;margin-bottom:1.5rem;">
+                    Get ready for the most amazing date ever, Princess! 👑<br><br>
+                    I'll pick you up with flowers, chocolates, and all my love! 🌹🍫💖
+                </div>
+                <button id="valentineCloseBtn" style="background:var(--kitty-pink);color:white;border:none;padding:0.8rem 2rem;border-radius:20px;font-size:1rem;font-family:'Quicksand',sans-serif;font-weight:700;cursor:pointer;transition:all 0.2s;">Continue 💕</button>
+            `;
+            overlay.appendChild(div);
+            document.body.appendChild(overlay);
+
+            createConfetti();
+            createHeartRain();
+            playSuccess();
+
+            function closeValentine() {
+                overlay.style.opacity = '0';
+                overlay.style.transition = 'opacity 0.4s';
+                setTimeout(() => {
+                    overlay.remove();
+                    currentQ++;
+                    completeQuiz();
+                }, 400);
+            }
+
+            document.getElementById('valentineCloseBtn').addEventListener('click', closeValentine);
+            // Also auto-close after 6s if user doesn't click
+            setTimeout(closeValentine, 6000);
+        }
+
+        function createHeartRain() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const h = document.createElement('div');
+                    h.textContent = hearts[Math.floor(Math.random() * 5)];
+                    h.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-50px;font-size:${Math.random()*25+20}px;z-index:10004;pointer-events:none;animation:confettiFall 4s linear forwards;`;
+                    document.body.appendChild(h);
+                    setTimeout(() => h.remove(), 4000);
+                }, i * 80);
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('progressFill').style.width = ((currentQ / questions.length) * 100) + '%';
+        }
+
+        function completeQuiz() {
+            playSuccess();
+            createConfetti();
+            setTimeout(() => {
+                document.getElementById('questionnaireScreen').classList.remove('active');
+                document.getElementById('navMenu').style.display = 'block';
+                showScreen('promisesScreen');
+            }, 1500);
+        }
+
+        // Screen Navigation
+        function showScreen(id) {
+            playClick();
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if (event && event.target) event.target.classList.add('active');
+
+            // Show counter only on promises screen
+            const counter = document.getElementById('unlockedCount');
+            if (id === 'promisesScreen') {
+                const flipped = document.querySelectorAll('.promise-card.flipped').length;
+                if (flipped > 0) counter.style.display = 'block';
+            } else {
+                counter.style.display = 'none';
+            }
+            
+            if (id === 'promisesScreen' && !document.getElementById('cardsContainer').hasChildNodes()) {
+                generateCards();
+            }
+            if (id === 'galleryScreen' && !document.getElementById('galleryGrid').hasChildNodes()) {
+                generateGallery();
+            }
+        }
+
+        // Promises
+        const promises = [
+            "I promise to love you more each day, Sneha",
+            "I promise to always make you laugh",
+            "I promise to hold your hand through storms",
+            "I promise to be your biggest cheerleader",
+            "I promise to never let you sleep angry",
+            "I promise to surprise you with gestures",
+            "I promise to truly listen to you",
+            "I promise to dance in the kitchen",
+            "I promise to be patient with you",
+            "I promise to celebrate every victory",
+            "I promise to remember what matters",
+            "I promise breakfast in bed",
+            "I promise to protect your heart",
+            "I promise to grow old with you",
+            "I promise to always be honest",
+            "I promise to support your dreams",
+            "I promise to take candid photos",
+            "I promise to write love letters",
+            "I promise to create adventures",
+            "I promise to be your safe place",
+            "I promise to make you happy",
+            "I promise to respect your views",
+            "I promise surprise treats",
+            "I promise to watch sunrises",
+            "I promise to be silly and fun",
+            "I promise to remember dates",
+            "I promise space to be yourself",
+            "I promise to notice small things",
+            "I promise no judgment",
+            "I promise our dream future",
+            "I promise goodnight kisses",
+            "I promise comfort food",
+            "I promise partnership",
+            "I promise to keep dating you",
+            "I promise celebrations",
+            "I promise to love your family",
+            "I promise faithfulness",
+            "I promise a loving home",
+            "I promise romance alive",
+            "I promise surprise getaways",
+            "I promise to be your shoulder",
+            "I promise to sing to you",
+            "I promise sweet notes",
+            "I promise to choose you",
+            "I promise to be present",
+            "I promise complete trust",
+            "I promise to learn about you",
+            "I promise excitement",
+            "I promise comfort in pain",
+            "I promise deep thoughts",
+            "I promise daily I love yous",
+            "I promise to respect dreams",
+            "I promise our traditions",
+            "I promise spontaneity",
+            "I promise to keep flirting",
+            "I promise to be calm",
+            "I promise quick forgiveness",
+            "I promise sacrifices for us",
+            "I promise showing pride",
+            "I promise keeping sparks",
+            "I promise world exploration",
+            "I promise understanding",
+            "I promise gratitude",
+            "I promise cherishing memories",
+            "I promise my romance style",
+            "I promise challenge support",
+            "I promise you'll feel beautiful",
+            "I promise best friendship",
+            "I promise keeping secrets",
+            "I promise heart gentleness",
+            "I promise loving quirks",
+            "I promise making time",
+            "I promise staying passionate",
+            "I promise courting forever",
+            "I promise to be your rock",
+            "I promise laughing at jokes",
+            "I promise inspiring love",
+            "I promise vulnerability",
+            "I promise choosing kindness",
+            "I promise making you proud",
+            "I promise falling repeatedly",
+            "I promise new experiences",
+            "I promise scary movie hugs",
+            "I promise being your fan",
+            "I promise extraordinary moments",
+            "I promise no distance",
+            "I promise daily gratitude",
+            "I promise young love",
+            "I promise believing in us",
+            "I promise showing up",
+            "I promise loving us together",
+            "I promise cherishing you",
+            "I promise being your smile",
+            "I promise love over ego",
+            "I promise our legacy",
+            "I promise journey patience",
+            "I promise celebrating you",
+            "I promise forever",
+            "I promise growing love, Sneha"
+        ];
+
+        function generateCards() {
+            const cont = document.getElementById('cardsContainer');
+            promises.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'promise-card';
+                const img = imageFiles[i % imageFiles.length];
+                card.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="kitty-icon"><img src="${img}" alt="Kitty"></div>
+                            <div class="card-number">Promise ${i + 1}</div>
+                            <div class="lock-icon">🔒</div>
+                        </div>
+                        <div class="card-back">
+                            <p class="promise-text" id="p${i}"></p>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', function() {
+                    if (!this.classList.contains('flipped')) {
+                        playCardFlip();
+                        this.classList.add('flipped');
+                        createSparkles(window.innerWidth / 2, window.innerHeight / 2);
+                        hackerType(p, document.getElementById(`p${i}`), 25);
+                        setTimeout(() => openModal(i + 1, p), 800);
+                        // Update unlocked counter
+                        const flipped = document.querySelectorAll('.promise-card.flipped').length;
+                        const counter = document.getElementById('unlockedCount');
+                        counter.textContent = `💝 ${flipped} / 100 Unlocked`;
+                        counter.style.display = 'block';
+                    }
+                });
+                cont.appendChild(card);
+            });
+        }
+
+        function hackerType(txt, el, spd = 30) {
+            let idx = 0;
+            el.innerHTML = '';
+            const cur = document.createElement('span');
+            cur.className = 'terminal-cursor';
+            function type() {
+                if (idx < txt.length) {
+                    el.textContent += txt.charAt(idx);
+                    playSound(800 + Math.random() * 300, 0.02);
+                    idx++;
+                    setTimeout(type, spd);
+                } else {
+                    setTimeout(() => cur.remove(), 500);
+                }
+            }
+            el.appendChild(cur);
+            type();
+        }
+
+        function openModal(n, p) {
+            playSuccess();
+            document.getElementById('modalPromiseNumber').textContent = `// Promise #${n} for Sneha`;
+            document.getElementById('modalPromiseText').textContent = '';
+            document.getElementById('promiseModal').classList.add('active');
+            hackerType(p, document.getElementById('modalPromiseText'), 35);
+        }
+
+        document.getElementById('closeModal').onclick = function() {
+            playClick();
+            document.getElementById('promiseModal').classList.remove('active');
+        };
+
+        document.getElementById('promiseModal').onclick = function(e) {
+            if (e.target === this) {
+                playClick();
+                this.classList.remove('active');
+            }
+        };
+
+        // Gallery
+        function generateGallery() {
+            const photos = [
+                { src: '/mnt/user-data/uploads/IMG_20251219_233518_652.jpg',            caption: 'My Beautiful Sneha',       date: '💖 December 2025' },
+                { src: '/mnt/user-data/uploads/IMG-20250913-WA0013.jpg',                caption: 'Sneha on the Train',       date: '🚆 September 2025' },
+                { src: '/mnt/user-data/uploads/IMG_20251021_010736_971.jpg',            caption: 'Goddess in Green',         date: '💚 October 2025' },
+                { src: '/mnt/user-data/uploads/IMG_20251127_222501.jpg',                caption: 'You Look Stunning',        date: '✨ November 2025' },
+                { src: '/mnt/user-data/uploads/Snapchat-1507274770.jpg',               caption: 'Our Polaroid Moment',      date: '📸 Just Us' },
+                { src: '/mnt/user-data/uploads/Snapchat-1212221184.jpg',               caption: 'Mall Day Together',        date: '🛍️ Our Outing' },
+                { src: '/mnt/user-data/uploads/Snapchat-1444969917.jpg',               caption: 'Pandal Hopping',           date: '🙏 Ganpati Vibes' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_34_AM__1_.jpeg', caption: 'Dreamy Eyes',  date: '🌙 October 2025' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_35_AM.jpeg',     caption: 'Sneha with Flowers', date: '🌸 My Favourite Photo' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_34_AM.jpeg',     caption: 'My Princess Smiling', date: '👑 Always Glowing' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM__2_.jpeg', caption: 'Childhood Memories', date: '🌟 Then & Now' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM__1_.jpeg', caption: 'Little Sneha 🥹',    date: '👶 So Cute' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_33_AM.jpeg',     caption: 'Flower Bouquet Day',  date: '💐 You Said Yes' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__3_.jpeg', caption: 'Camera Roll Queen',   date: '📷 October 2025' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__2_.jpeg', caption: 'Traditional & Timeless', date: '🪷 Always Elegant' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM__1_.jpeg', caption: 'Argentina Fan 🇦🇷',    date: '⚽ My Cutie' },
+                { src: '/mnt/user-data/uploads/WhatsApp_Image_2025-10-20_at_12_51_32_AM.jpeg',     caption: 'Every Angle Perfect',  date: '💕 Always You' },
+            ];
+            const grid = document.getElementById('galleryGrid');
+            photos.forEach(ph => {
+                const fr = document.createElement('div');
+                fr.className = 'photo-frame';
+                fr.innerHTML = `
+                    <img src="${ph.src}" class="photo-image" alt="${ph.caption}">
+                    <div class="photo-caption">${ph.caption}</div>
+                    <div class="photo-date">${ph.date}</div>
+                `;
+                grid.appendChild(fr);
+            });
+        }
+
+        // Effects
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#ffd700', '#ff6b9d', '#e066ff'];
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const c = document.createElement('div');
+                    c.className = 'confetti';
+                    c.style.left = Math.random() * 100 + '%';
+                    c.style.background = colors[Math.floor(Math.random() * 5)];
+                    document.body.appendChild(c);
+                    setTimeout(() => c.remove(), 3000);
+                }, i * 25);
+            }
+        }
+
+        function createSparkles(x, y) {
+            const emojis = ['✨', '💖', '⭐', '💕', '🎀'];
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const s = document.createElement('div');
+                    s.className = 'sparkle';
+                    s.textContent = emojis[Math.floor(Math.random() * 5)];
+                    s.style.left = (x + (Math.random() - 0.5) * 120) + 'px';
+                    s.style.top = (y + (Math.random() - 0.5) * 120) + 'px';
+                    s.style.fontSize = (Math.random() * 20 + 18) + 'px';
+                    document.body.appendChild(s);
+                    setTimeout(() => s.remove(), 1000);
+                }, i * 40);
+            }
+        }
+
+        // Initialize
+        createDecorations();
+    </script>
+</body>
+</html>
